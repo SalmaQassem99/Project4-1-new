@@ -657,9 +657,6 @@ a {
   position: relative;
   top: -3vh;
 }
-.success-wrapper .success-card .card-wrapper .img-wrapper img {
-  transform: scaleX(-1);
-}
 .success-wrapper .success-card .card-wrapper .content-card {
   height: 60%;
 }
