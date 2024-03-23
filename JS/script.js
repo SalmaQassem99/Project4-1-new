@@ -14,6 +14,9 @@ const icons = document.querySelectorAll(`.card-icon`);
 const soundIcons = document.querySelectorAll(".card-icon.sound");
 const recordIcons = document.querySelectorAll(".card-icon.speak");
 const successModal = document.querySelector(".success-wrapper");
+const flipAudio = document.querySelector("#flip-audio");
+const flipBackAudio = document.querySelector("#flip-back-audio");
+let cardId;
 const animateInfo = () => {
   infoIcon.classList.add("show");
   infoIcon.addEventListener("animationend", () => {
@@ -34,9 +37,9 @@ playButton.addEventListener("click", () => {
   cardWrapper.addEventListener("animationend", () => {
     cardWrapper.classList.remove("hide");
     cardWrapper.style.visibility = "hidden";
-    game.style.backgroundImage = `url('${
-      document.querySelector(".background-link").textContent
-    }')`;
+    game.style.backgroundImage = `url(${
+      document.querySelector(".game-background").textContent
+    })`;
     body.classList.add("show");
     pauseButton.style.visibility = "visible";
     document.querySelector(".game-vector").classList.add("show");
@@ -74,24 +77,31 @@ icons.forEach((icon) => {
     }
   });
 });
+flipAudio.addEventListener("ended", () => {
+  document.querySelector(`audio[id="${cardId}"]`).play();
+  const icons = document.querySelectorAll(`.card-icon[data-id="${cardId}"]`);
+  icons.forEach((icon) => {
+    icon.style.visibility = "visible";
+    icon.classList.add("show");
+  });
+});
+flipBackAudio.addEventListener("ended", () => {
+  const icons = document.querySelectorAll(`.card-icon[data-id="${cardId}"]`);
+  icons.forEach((icon) => {
+    icon.classList.add("hide");
+  });
+});
 cards.forEach((card) => {
-  card.addEventListener("click", (e) => {
-    const cardId = card.dataset.id;
-    const icons = document.querySelectorAll(`.card-icon[data-id="${cardId}"]`);
+  card.addEventListener("click", () => {
+    cardId = card.dataset.id;
     if (!card.classList.contains("is-flipped")) {
-      document.querySelector(`audio[id="${cardId}"]`).play();
+      flipAudio.play();
       card.classList.remove("is-flippedBack");
       card.classList.add("is-flipped");
-      icons.forEach((icon) => {
-        icon.style.visibility = "visible";
-        icon.classList.add("show");
-      });
     } else {
+      flipBackAudio.play();
       card.classList.remove("is-flipped");
       card.classList.add("is-flippedBack");
-      icons.forEach((icon) => {
-        icon.classList.add("hide");
-      });
     }
   });
 });

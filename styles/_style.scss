@@ -665,6 +665,9 @@ $vector-height: 12%;
         margin: 0 auto;
         position: relative;
         top: -3vh;
+        img {
+          transform: scaleX(-1);
+        }
       }
       .content-card {
         height: 60%;
@@ -832,26 +835,24 @@ $vector-height: 12%;
 }
 @keyframes increase {
   0% {
-    scale: 0;
+    transform: scaleX(0);
   }
   50% {
-    scale: 1.1;
+    transform: scaleX(1.15);
   }
   100% {
-    scale: 1;
+    transform: scaleX(1);
   }
 }
 @keyframes decrease {
   0% {
-    scale: 1;
+    transform: scaleX(1);
   }
-
   50% {
-    scale: 1.1;
+    transform: scaleX(1.15);
   }
-
   100% {
-    scale: 0;
+    transform: scaleX(0);
   }
 }
 @keyframes pulse {
