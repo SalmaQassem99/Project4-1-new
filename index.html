@@ -237,20 +237,23 @@
     const recordIcons = document.querySelectorAll(".card-icon.speak");
 
     recordIcons.forEach((icon) => {
+      let timeout;
       icon.addEventListener("click", (e) => {
         e.preventDefault();
       });
       icon.addEventListener("pointerdown", () => {
         icon.classList.add("animate");
-        icon.addEventListener("pointerup", () => {
-          icon.classList.remove("animate");
-        });
-        icon.addEventListener("pointerout", () => {
-          icon.classList.remove("animate");
-        });
-        setTimeout(() => {
+        timeout = setTimeout(() => {
           icon.classList.remove("animate");
         }, 3000);
+      });
+      icon.addEventListener("pointerup", () => {
+        icon.classList.remove("animate");
+        clearTimeout(timeout);
+      });
+      icon.addEventListener("pointerout", () => {
+        icon.classList.remove("animate");
+        clearTimeout(timeout);
       });
     });
     successItem.addEventListener("animationend", () => {

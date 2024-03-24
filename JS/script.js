@@ -12,7 +12,6 @@ const iconsArr = [...arrows, pauseButton];
 const cards = document.querySelectorAll(".game-card .card-wrapper");
 const icons = document.querySelectorAll(`.card-icon`);
 const soundIcons = document.querySelectorAll(".card-icon.sound");
-
 const successModal = document.querySelector(".success-wrapper");
 const flipAudio = document.querySelector("#flip-audio");
 const flipBackAudio = document.querySelector("#flip-back-audio");
