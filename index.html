@@ -242,6 +242,12 @@
       });
       icon.addEventListener("pointerdown", () => {
         icon.classList.add("animate");
+        icon.addEventListener("pointerup", () => {
+          icon.classList.remove("animate");
+        });
+        icon.addEventListener("pointerout", () => {
+          icon.classList.remove("animate");
+        });
         setTimeout(() => {
           icon.classList.remove("animate");
         }, 3000);
