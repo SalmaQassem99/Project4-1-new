@@ -12,7 +12,7 @@ const iconsArr = [...arrows, pauseButton];
 const cards = document.querySelectorAll(".game-card .card-wrapper");
 const icons = document.querySelectorAll(`.card-icon`);
 const soundIcons = document.querySelectorAll(".card-icon.sound");
-const recordIcons = document.querySelectorAll(".card-icon.speak");
+
 const successModal = document.querySelector(".success-wrapper");
 const flipAudio = document.querySelector("#flip-audio");
 const flipBackAudio = document.querySelector("#flip-back-audio");
@@ -112,20 +112,6 @@ soundIcons.forEach((icon) => {
     document.querySelector(`audio[id="${id}"]`).play();
     icon.addEventListener("animationend", () => {
       icon.classList.remove("clicked");
-    });
-  });
-});
-recordIcons.forEach((icon) => {
-  icon.addEventListener("click", (e) => {
-    e.preventDefault();
-  });
-  icon.addEventListener("pointerdown", () => {
-    icon.classList.add("animate");
-    icon.addEventListener("pointerup", () => {
-      icon.classList.remove("animate");
-    });
-    icon.addEventListener("pointerout", () => {
-      icon.classList.remove("animate");
     });
   });
 });
